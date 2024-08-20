@@ -1,7 +1,7 @@
 export default function Page() {
   // CHANGE
   const reservationId = 23;
-  const maxCapacity = 23;
+  const max_capacity = 23;
 
   return (
     <div>
@@ -21,7 +21,7 @@ export default function Page() {
             <option value="" key="">
               Select number of guests...
             </option>
-            {Array.from({ length: maxCapacity }, (_, i) => i + 1).map((x) => (
+            {Array.from({ length: max_capacity }, (_, i) => i + 1).map((x) => (
               <option value={x} key={x}>
                 {x} {x === 1 ? "guest" : "guests"}
               </option>

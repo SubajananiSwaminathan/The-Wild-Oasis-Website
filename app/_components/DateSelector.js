@@ -14,7 +14,7 @@ function isAlreadyBooked(range, datesArr) {
 
 function DateSelector() {
   // CHANGE
-  const regularPrice = 23;
+  const regular_price = 23;
   const discount = 23;
   const numNights = 23;
   const cabinPrice = 23;
@@ -43,13 +43,13 @@ function DateSelector() {
           <p className="flex gap-2 items-baseline">
             {discount > 0 ? (
               <>
-                <span className="text-2xl">${regularPrice - discount}</span>
+                <span className="text-2xl">${regular_price - discount}</span>
                 <span className="line-through font-semibold text-primary-700">
-                  ${regularPrice}
+                  ${regular_price}
                 </span>
               </>
             ) : (
-              <span className="text-2xl">${regularPrice}</span>
+              <span className="text-2xl">${regular_price}</span>
             )}
             <span className="">/night</span>
           </p>
