@@ -16,7 +16,7 @@ function DateSelector() {
   // CHANGE
   const regular_price = 23;
   const discount = 23;
-  const numNights = 23;
+  const no_of_nights = 23;
   const cabinPrice = 23;
   const range = { from: null, to: null };
 
@@ -53,10 +53,10 @@ function DateSelector() {
             )}
             <span className="">/night</span>
           </p>
-          {numNights ? (
+          {no_of_nights ? (
             <>
               <p className="bg-accent-600 px-3 py-2 text-2xl">
-                <span>&times;</span> <span>{numNights}</span>
+                <span>&times;</span> <span>{no_of_nights}</span>
               </p>
               <p>
                 <span className="text-lg font-bold uppercase">Total</span>{" "}

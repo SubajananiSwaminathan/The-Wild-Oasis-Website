@@ -11,10 +11,10 @@ export default function Page() {
 
       <form className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col">
         <div className="space-y-2">
-          <label htmlFor="numGuests">How many guests?</label>
+          <label htmlFor="no_of_guests">How many guests?</label>
           <select
-            name="numGuests"
-            id="numGuests"
+            name="no_of_guests"
+            id="no_of_guests"
             className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
             required
           >
