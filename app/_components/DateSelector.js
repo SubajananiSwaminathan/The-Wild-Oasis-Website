@@ -1,41 +1,50 @@
-import { isWithinInterval } from "date-fns";
-import { DayPicker } from "react-day-picker";
+"use client";
+
 import "react-day-picker/dist/style.css";
 
-function isAlreadyBooked(range, datesArr) {
+import { DayPicker } from "react-day-picker";
+
+import { isWithinInterval } from "date-fns";
+
+import { useReservation } from "./ReservationContext";
+
+function isAlreadyBooked(range, datesArray) {
   return (
     range.from &&
     range.to &&
-    datesArr.some((date) =>
+    datesArray.some((date) =>
       isWithinInterval(date, { start: range.from, end: range.to })
     )
   );
 }
 
-function DateSelector() {
+function DateSelector({ settings, cabin, bookedDates }) {
+  const { range, setRange, resetRange } = useReservation();
+
   // CHANGE
   const regular_price = 23;
   const discount = 23;
   const no_of_nights = 23;
-  const cabinPrice = 23;
-  const range = { from: null, to: null };
+  const cabin_price = 23;
 
   // SETTINGS
-  const minBookingLength = 1;
-  const maxBookingLength = 23;
+  const { min_booking_length, max_booking_length } = settings;
 
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
         className="pt-12 place-self-center"
         mode="range"
-        min={minBookingLength + 1}
-        max={maxBookingLength}
-        fromMonth={new Date()}
-        fromDate={new Date()}
-        toYear={new Date().getFullYear() + 5}
+        onSelect={setRange}
+        selected={range}
+        min={min_booking_length + 1}
+        max={max_booking_length}
         captionLayout="dropdown"
         numberOfMonths={2}
+        disabled={{
+          before: new Date(),
+          after: new Date(new Date().setFullYear(new Date().getFullYear() + 5)),
+        }}
       />
 
       <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-[72px]">
@@ -60,7 +69,7 @@ function DateSelector() {
               </p>
               <p>
                 <span className="text-lg font-bold uppercase">Total</span>{" "}
-                <span className="text-2xl font-semibold">${cabinPrice}</span>
+                <span className="text-2xl font-semibold">${cabin_price}</span>
               </p>
             </>
           ) : null}
@@ -69,7 +78,7 @@ function DateSelector() {
         {range.from || range.to ? (
           <button
             className="border border-primary-800 py-2 px-4 text-sm font-semibold"
-            onClick={() => resetRange()}
+            onClick={resetRange}
           >
             Clear
           </button>
